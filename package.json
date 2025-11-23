@@ -1,8 +1,21 @@
 {
+  "name": "vuejs_films",
+  "version": "1.0.0",
+  "description": "Clone do site YTS em Vue.js",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "serve": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.3.0",
+    "vue-router": "^4.2.0",
+    "axios": "^1.4.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.0",
+    "vite": "^4.3.0"
   }
 }

@@ -1,24 +1,38 @@
 <template>
   <div id="app">
-    <Header />
-    <main>
-      <router-view />
-    </main>
-    <Footer />
+    <div v-if="loading" class="loading">
+      <h1>🎬 YTS Clone</h1>
+      <p>Carregando...</p>
+    </div>
+    <div v-else>
+      <Header />
+      <main>
+        <router-view />
+      </main>
+      <Footer />
+    </div>
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header.vue';
-import Footer from '@/components/Footer.vue';
+import Header from '@/components/Header.vue'
+import Footer from '@/components/Footer.vue'
 
 export default {
   name: 'App',
   components: {
     Header,
     Footer
+  },
+  data() {
+    return {
+      loading: false
+    }
+  },
+  mounted() {
+    console.log('App mounted - Vue está funcionando!')
   }
-};
+}
 </script>
 
 <style>
@@ -45,62 +59,23 @@ main {
   flex: 1;
 }
 
-/* Scrollbar Styling */
-::-webkit-scrollbar {
-  width: 8px;
+.loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #0f0f0f;
 }
 
-::-webkit-scrollbar-track {
-  background: #1a1a1a;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #e50914;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #b8070f;
-}
-
-/* Selection Styling */
-::selection {
-  background: #e50914;
-  color: #fff;
-}
-
-/* Focus Outline */
-button:focus,
-input:focus,
-select:focus {
-  outline: 2px solid #e50914;
-  outline-offset: 2px;
-}
-
-/* Responsive Images */
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Utility Classes */
-.text-center {
-  text-align: center;
-}
-
-.text-red {
+.loading h1 {
   color: #e50914;
+  font-size: 3rem;
+  margin-bottom: 1rem;
 }
 
-.mt-2 { margin-top: 0.5rem; }
-.mt-4 { margin-top: 1rem; }
-.mb-2 { margin-bottom: 0.5rem; }
-.mb-4 { margin-bottom: 1rem; }
-.p-4 { padding: 1rem; }
-
-@media (max-width: 768px) {
-  .container {
-    padding: 0 0.5rem;
-  }
+.loading p {
+  color: #ccc;
+  font-size: 1.2rem;
 }
 </style>
